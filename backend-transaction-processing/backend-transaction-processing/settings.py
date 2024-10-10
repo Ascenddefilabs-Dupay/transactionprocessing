@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-o+($^woe^6e!wb@1x^b*qx2hfqz@3!^hqnj_w@3d#dy^=e^cbp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['transactionprocess-ind-255574993735.asia-south1.run.app']
-
+# ALLOWED_HOSTS = ['transactionprocess-ind-255574993735.asia-south1.run.app']
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
 # Application definition
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
      'corsheaders',
     'transactionprocessing',
+    'admin_transaction_processing'
 
 ]
 
