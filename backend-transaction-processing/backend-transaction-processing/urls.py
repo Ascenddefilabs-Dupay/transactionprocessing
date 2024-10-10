@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('transactionprocessing_api/', include('transactionprocessing.urls')),
+    path('admintransactionprocessingapi/',include('admin_transaction_processing.urls'))
 ]
