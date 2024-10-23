@@ -47,3 +47,33 @@ class Phase(models.Model):
     phase_name = models.CharField(max_length=50, choices=PHASE_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+# From here connected with frontend code
+class Account(models.Model):
+    account_id = models.AutoField(primary_key=True)
+    account_type = models.CharField(max_length=255)
+    account_name = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        db_table = 'admincms_accounts'
+
+class Asset(models.Model):
+    asset_id = models.AutoField(primary_key=True)
+    asset_name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        db_table = 'admincms_assets'
+
+class Phases(models.Model):    
+    phase_id = models.AutoField(primary_key=True)
+    phase_name = models.CharField(max_length=50)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'admincms_phases'
