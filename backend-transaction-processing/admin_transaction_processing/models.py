@@ -65,9 +65,32 @@ class Asset(models.Model):
     description = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    account_id = models.ForeignKey(Account, on_delete=models.CASCADE, null=True, blank=True, related_name='assets')
     
     class Meta:
         db_table = 'admincms_assets'
+
+class Denomination(models.Model):
+    denomination_id = models.AutoField(primary_key=True)
+    asset_id = models.ForeignKey(Asset, on_delete=models.CASCADE, null=True, blank=True, related_name='denominations')
+    denomination_name = models.CharField(max_length=50)
+    symbol = models.CharField(max_length=10)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'admincms_denominations'
+
+class Address(models.Model):
+    address_id = models.AutoField(primary_key=True)
+    denomination_id = models.ForeignKey(Denomination, on_delete=models.CASCADE, null=True, blank=True, related_name='addresses')
+    address_name = models.CharField(max_length=255)
+    default_flag = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'admincms_address'
 
 class Phases(models.Model):    
     phase_id = models.AutoField(primary_key=True)
