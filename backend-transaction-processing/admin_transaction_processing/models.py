@@ -50,47 +50,47 @@ class Phase(models.Model):
 
 # From here connected with frontend code
 class Account(models.Model):
-    account_id = models.AutoField(primary_key=True)
-    account_type = models.CharField(max_length=255)
-    account_name = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    duc_account_id = models.AutoField(primary_key=True)
+    duc_account_type = models.CharField(max_length=255)
+    duc_account_name = models.CharField(max_length=255)
+    duc_created_at = models.DateTimeField(auto_now_add=True)
+    duc_updated_at = models.DateTimeField(auto_now=True)
     
     class Meta:
-        db_table = 'admincms_accounts'
+        db_table = 'dupay_accounts'
 
 class Asset(models.Model):
-    asset_id = models.AutoField(primary_key=True)
-    asset_name = models.CharField(max_length=255)
-    description = models.CharField(max_length=255, blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    account_id = models.ForeignKey(Account, on_delete=models.CASCADE, null=True, blank=True, related_name='assets')
+    duc_asset_id = models.AutoField(primary_key=True)
+    duc_asset_name = models.CharField(max_length=255)
+    duc_description = models.CharField(max_length=255, blank=True, null=True)
+    duc_created_at = models.DateTimeField(auto_now_add=True)
+    duc_updated_at = models.DateTimeField(auto_now=True)
+    duc_account_id = models.ForeignKey(Account, on_delete=models.CASCADE, null=True, blank=True, related_name='assets')
     
     class Meta:
-        db_table = 'admincms_assets'
+        db_table = 'dupay_assets'
 
 class Denomination(models.Model):
-    denomination_id = models.AutoField(primary_key=True)
-    asset_id = models.ForeignKey(Asset, on_delete=models.CASCADE, null=True, blank=True, related_name='denominations')
-    denomination_name = models.CharField(max_length=50)
-    symbol = models.CharField(max_length=10)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    duc_denomination_id = models.AutoField(primary_key=True)
+    duc_asset_id = models.ForeignKey(Asset, on_delete=models.CASCADE, null=True, blank=True, related_name='denominations')
+    duc_denomination_name = models.CharField(max_length=50)
+    duc_symbol = models.CharField(max_length=10)
+    duc_created_at = models.DateTimeField(auto_now_add=True)
+    duc_updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        db_table = 'admincms_denominations'
+        db_table = 'dupay_denominations'
 
 class Address(models.Model):
-    address_id = models.AutoField(primary_key=True)
-    denomination_id = models.ForeignKey(Denomination, on_delete=models.CASCADE, null=True, blank=True, related_name='addresses')
-    address_name = models.CharField(max_length=255)
-    default_flag = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    duc_address_id = models.AutoField(primary_key=True)
+    duc_denomination_id = models.ForeignKey(Denomination, on_delete=models.CASCADE, null=True, blank=True, related_name='addresses')
+    duc_address_name = models.CharField(max_length=255)
+    duc_default_flag = models.BooleanField(default=False)
+    duc_created_at = models.DateTimeField(auto_now_add=True)
+    duc_updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        db_table = 'admincms_address'
+        db_table = 'dupay_address'
 
 class Phases(models.Model):    
     phase_id = models.AutoField(primary_key=True)
@@ -99,4 +99,4 @@ class Phases(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        db_table = 'admincms_phases'
+        db_table = 'dupay_phases'
