@@ -32,7 +32,6 @@ class DenominationNameListView(APIView):
 # to store accounts details
 class AccountCreateView(APIView):
     def post(self, request):
-        print(request.data)
         serializer = AccountSerializer(data=request.data)
         
         if serializer.is_valid():
@@ -44,7 +43,6 @@ class AccountCreateView(APIView):
 #  to store asset details   
 class AssetCreateView(APIView):
     def post(self, request):
-        print(request.data)
         serializer = AssetSerializer(data=request.data)
         
         if serializer.is_valid():
@@ -56,7 +54,6 @@ class AssetCreateView(APIView):
 #  to store Denomination details   
 class DenominationCreateView(APIView):
     def post(self, request):
-        print(request.data)
         serializer = DenominationSerializer(data=request.data)
         
         if serializer.is_valid():
@@ -68,7 +65,6 @@ class DenominationCreateView(APIView):
 #  to store Address details   
 class AddressCreateView(APIView):
     def post(self, request):
-        print('address data',request.data)
         serializer = AddressSerializer(data=request.data)
         
         if serializer.is_valid():
@@ -80,7 +76,6 @@ class AddressCreateView(APIView):
 #  to store phases details  
 class PhasesCreateView(APIView):
     def post(self, request):
-        print(request.data)
         serializer = PhasesSerializer(data=request.data)
         
         if serializer.is_valid():

@@ -4,45 +4,45 @@ from .models import Account,Asset,Phases,Denomination,Address
 
 # to fetch account id
 class AccountIdSerializer(serializers.ModelSerializer):
-    account_id = serializers.CharField()
+    duc_account_id = serializers.CharField()
     class Meta:
         model = Account
-        fields = ['account_id', 'account_type']
+        fields = ['duc_account_id', 'duc_account_type']
 
 # to fetch asset id
 class AssetIdSerializer(serializers.ModelSerializer):
-    asset_id = serializers.CharField()
+    duc_asset_id = serializers.CharField()
     class Meta:
         model = Asset
-        fields = ['asset_id', 'asset_name']
+        fields = ['duc_asset_id', 'duc_asset_name']
 
 class DenominationIdSerializer(serializers.ModelSerializer):
-    denomination_id = serializers.CharField()
+    duc_denomination_id = serializers.CharField()
     class Meta:
         model = Denomination
-        fields = ['denomination_id', 'denomination_name']
+        fields = ['duc_denomination_id', 'duc_denomination_name']
 
 # ============================================================
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ['account_type', 'account_name']
+        fields = ['duc_account_type', 'duc_account_name']
 
 class AssetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Asset
-        fields = ['asset_name', 'description','account_id']
+        fields = ['duc_asset_name', 'duc_description','duc_account_id']
 
 class DenominationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Denomination
-        fields = ['denomination_name', 'symbol','asset_id']
+        fields = ['duc_denomination_name', 'duc_symbol','duc_asset_id']
 
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
-        fields = ['address_name', 'default_flag','denomination_id']
+        fields = ['duc_address_name', 'duc_default_flag','duc_denomination_id']
 
 class PhasesSerializer(serializers.ModelSerializer):
     class Meta:
